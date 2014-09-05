@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Calculator</title>
+ 
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+  <style type="text/css">
+    body, div, header, nav, section, article, aside, form, h1, ul, li, a, input, button, label {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	list-style-type: none;
+}
+
+#wrapper {
+	margin-top: 15px;
+	margin-left: 15px;
+	padding: 0 5px 5px;
+	width: 405px;
+	font-family: Segoe UI, sans-serif;
+	font-size: 14px;
+	border: 1px solid black;
+	border-radius: 7px;
+	background-color: #D8EEFF;
+}
+
+	#wrapper > header {
+		margin-bottom: 5px;
+	}
+
+		#wrapper > header h1 {
+			display: inline-block;
+			font-size: 1em;
+			font-weight: normal;
+		}
+		
+		#wrapper > header img {
+			width: 20px;
+			display: inline-block;
+			position: relative;
+			top: 5px;
+		}
+	
+	#windowNav {
+		float: right;
+	}
+
+		#windowNav li {
+			display: inline;
+		}
+
+			#windowNav li a {
+				float: left;
+			}
+			
+			#minimize {
+				width: 27px;
+				height: 18px;
+				background: url(http://s8.postimg.org/opjmneim9/minimize.png) no-repeat;
+				border: 1px solid black;
+				border-top: none;
+				border-bottom-left-radius: 5px;
+			}
+
+			#minimize:hover {
+				background-position: 0 -18px;
+				-moz-box-shadow: 1px 1px 10px 1px #496ee5;
+				-webkit-box-shadow: 1px 1px 10px 1px #496ee5;
+				box-shadow: 1px 1px 10px 1px #496ee5;
+			}
+
+			#minimize:active {
+					background-position: 0 -36px;
+			}
+
+			#maximize {
+				width: 26px;
+				height: 18px;
+				background: url(http://s15.postimg.org/r56yfffnb/maximize.png) no-repeat;
+				border-bottom: 1px solid black;
+			}
+			
+			#maximize {
+				cursor: default;
+			}
+			
+			#close {
+				width: 46px;
+				height: 18px;
+				background: url(http://s12.postimg.org/kecgr2q4p/close.png) no-repeat;
+				border: 1px solid black;
+				border-top: none;
+				border-bottom-right-radius: 5px;
+			}
+
+			#close:hover {
+				-moz-box-shadow: 1px 1px 10px 1px #f00;
+				-webkit-box-shadow: 1px 1px 10px 1px #f00;
+				box-shadow: 1px 1px 10px 1px #f00;
+			}
+
+			#close:active {
+				background-position: 0 -18px;
+			}
+
+#mainProgram {
+	border: 1px solid #777;
+	border-radius: 2px;
+	background: #F7FAFF;
+	background: -webkit-linear-gradient(#F7FAFF 12%,#D2E3F4 100px);
+	background: -moz-linear-gradient(#F7FAFF 12%, #D2E3F4 100px);
+	background: -o-linear-gradient(#F7FAFF 12%,#D2E3F4 100px);
+	background: linear-gradient(#F7FAFF 12%,#D2E3F4 100px);
+}
+		
+		#programNav {
+			padding: 0 2px;
+			border-bottom: 1px solid #B6BCCC;
+			background: #FEFEFF;
+			background: -webkit-linear-gradient(#FEFEFF 0%, #E5EAF5 34%, #D4DBED 35%, #E1E6F6 100%);
+            background: -moz-linear-gradient(#FEFEFF 0%, #E5EAF5 34%, #D4DBED 35%, #E1E6F6 100%);
+            background: -o-linear-gradient(#FEFEFF 0%, #E5EAF5 34%, #D4DBED 35%, #E1E6F6 100%);
+            background: linear-gradient(#FEFEFF 0%, #E5EAF5 34%, #D4DBED 35%, #E1E6F6 100%);
+		}
+	
+		#programNav ul li {
+			padding: 1px 8px;
+			font-size: 0.9em;
+			display: inline-block;
+		}
+			#programNav ul li:first-letter {
+				text-decoration: underline;
+			}
+
+			#programNav ul li:hover {
+				padding: 0 7px;
+				border: 1px solid #ABAFBA;
+				border-radius: 3px;
+				-moz-box-shadow: 0 0 0 1px #fff inset;
+				-webkit-box-shadow: 0 0 0 1px #fff inset;
+				box-shadow: 0 0 0 1px #fff inset;
+			}
+
+	article {
+		padding: 10px;
+	}
+
+		article input[type=text] {
+			padding: 15px 5px 5px;
+			width: 370px;
+			font-family: Consolas, monospace;
+			font-size: 1.7em;
+			text-align: right;
+			border: 1px solid #ABAFBA;
+			border-radius: 3px;
+			background: #e6effb;
+			background: -webkit-linear-gradient(#e6effb 0%,#ffffff 100%);
+			background: -moz-linear-gradient(#e6effb 0%, #ffffff 100%);
+			background: -o-linear-gradient(#e6effb 0%,#ffffff 100%);
+			background: linear-gradient(#e6effb 0%,#ffffff 100%);
+		}
+
+		article .binaryRep {
+			margin: 5px 0;
+			padding: 3px 5px;
+			font-family: Consolas, monospace;
+			font-size: 0.9em;
+			text-align: left;
+			color: #073B56;
+			border: 1px solid #ABAFBA;
+			border-radius: 3px;
+		}
+
+			.binaryRep ul {
+				display: block;
+			}
+
+			.binaryRep ul li {
+				display: inline-block;
+				margin-left: 13px;
+			}
+
+				.binaryRep ul li:first-child {
+					margin-left: 0;
+				}
+
+			.binaryIndex li {
+				color: #757A7C;
+			}
+				.binaryIndex li:first-child {
+					width: 172px;
+				}
+
+				.binaryIndex li:last-child {
+					width: 138px;
+					text-align: right;
+				}
+
+		.formatChoices {
+			display: inline-block;
+			width: 75px;
+		}
+		
+			.formatChoices aside {
+				padding: 3px 5px 5px;
+				font-size: 0.9em;
+				color: #073B56;
+				border: 1px solid #ABAFBA;
+				border-radius: 3px;
+			}
+
+			.formatChoices .numeralSys {
+				margin-bottom: 5px;
+			}
+
+				.formatChoices aside ul li {
+					margin-top: 3px;
+				}
+
+					.formatChoices aside ul li label input {
+						vertical-align: middle;
+					}
+
+		.buttons {
+			display: inline-block;
+			position: relative;
+			width: 300px;
+		}
+
+			.row {
+				display: inline-block;
+				width: 100%;
+			}
+
+			.btn {
+				display: inline-block;
+				margin-bottom: 4px;
+				width: 34px;
+				height: 27px;
+				font-family: Segoe UI, sans-serif;
+				font-size: 0.8em;
+				color: #073B56;
+				border: 1px solid #727F8D;
+				border-radius: 3px;
+				background: #f0f6fb;
+				background: -webkit-linear-gradient(#f0f6fb 0%,#e2eaf3 49%,#d5e0ed 50%,#d7e2ef 100%);
+				background: -moz-linear-gradient(#f0f6fb 0%, #e2eaf3 49%, #d5e0ed 50%, #d7e2ef 100%);
+				background: -o-linear-gradient(#f0f6fb 0%,#e2eaf3 49%,#d5e0ed 50%,#d7e2ef 100%);
+				background: linear-gradient(#f0f6fb 0%,#e2eaf3 49%,#d5e0ed 50%,#d7e2ef 100%);
+			}
+
+			.btn:not(:disabled) {
+				box-shadow: 0 0 0 1px #fff inset;
+				-moz-box-shadow: 0 0 0 1px #fff inset;
+				-webkit-box-shadow: 0 0 0 1px #fff inset;
+			}
+			
+			.btn-mutted {
+				background: #d2e3f4;
+			}
+
+			.btn-zero {
+				width: 73px;
+			}
+
+			.btn-result {
+				margin-top: -20px;
+				height: 59px;
+				position: absolute;
+				top: 146px;
+				right: 0px;
+				font-size: 1.6em;
+				font-weight: bold;
+			}
+
+			.num {
+				font-size: 1.1em;
+				padding-bottom: 15px;
+			}
+			
+			.btn:not(:disabled):hover {
+				border-color: #F5D50F;
+				background: #fef5eb;
+				background: -webkit-linear-gradient(#fef5eb 0%,#fce3c6 49%,#fbd075 50%,#fcf8ca 100%);
+				background: -moz-linear-gradient(#fef5eb 0%, #fce3c6 49%, #fbd075 50%, #fcf8ca 100%);
+				background: -o-linear-gradient(#fef5eb 0%,#fce3c6 49%,#fbd075 50%,#fcf8ca 100%);
+				background: linear-gradient(#fef5eb 0%,#fce3c6 49%,#fbd075 50%,#fcf8ca 100%);
+			}
+
+			.btn:not(:disabled):active {
+				box-shadow: 0 0 0 1px #F9A909 inset;
+				-moz-box-shadow: 0 0 0 1px #F9A909 inset;
+				-webkit-box-shadow: 0 0 0 1px #F9A909 inset;
+			}
+
+.inline {
+	display: inline-block;
+}
+
+.box-inset {
+	box-shadow: 0 0 0 1px #fff inset;
+	-moz-box-shadow: 0 0 0 1px #fff inset;
+	-webkit-box-shadow: 0 0 0 1px #fff inset;
+}
+  </style>
+  
+
+
+<script type="text/javascript">//<![CDATA[ 
+window.onload=function(){
+
+}//]]>  
+
+</script>
+
+
+</head>
+<body>
+  <div id="wrapper">
+		<header>
+			<img src="http://s10.postimg.org/n5yyew8kl/ms_calc.png" alt="calculatorIcon">
+			<h1>Calculator</h1>
+			<ul id="windowNav" class="inline">
+				<li>
+					<a href="" id="minimize"></a>
+				</li>
+				<li>
+					<a href="" id="maximize"></a>
+				</li>
+				<li>
+					<a href="" id="close"></a>
+				</li>
+			</ul>
+		</header>
+
+		<section id="mainProgram">
+			<nav id="programNav">
+				<ul class="inline">
+					<li>View</li>
+					<li>Edit</li>
+					<li>Help</li>
+				</ul>
+			</nav>
+			<article>
+				<form action="" method="get">
+					<input type="text" name="display" id="display" value="8854455" class="box-inset">
+
+					<div class="binaryRep box-inset">
+						<ul class="inline">
+							<li>0000</li>
+							<li>0000</li>
+							<li>0000</li>
+							<li>0000</li>
+							<li>0000</li>
+							<li>0000</li>
+							<li>0000</li>
+							<li>0000</li>
+						</ul>
+						<ul class="inline binaryIndex">
+							<li>63  </li>
+							<li>47  </li>
+							<li>  32</li>
+						</ul>
+						<ul class="inline">
+							<li>0000</li>
+							<li>0000</li>
+							<li>1000</li>
+							<li>0111</li>
+							<li>0001</li>
+							<li>1011</li>
+							<li>1011</li>
+							<li>0111</li>
+						</ul>
+						<ul class="inline binaryIndex">
+							<li>31  </li>
+							<li>15  </li>
+							<li>   0</li>
+						</ul>
+					</div>
+					<div class="formatChoices">
+						<aside class="numeralSys">
+							<ul>
+								<li>
+									<label>
+									<input type="radio" name="numeralSystem" value="Hex"> Hex
+									</label>
+								</li>
+								<li>
+									<label>
+									<input type="radio" name="numeralSystem" value="Dec" checked=""> Dec
+									</label>
+								</li>
+								<li>
+									<label>
+									<input type="radio" name="numeralSystem" value="Oct"> Oct
+									</label>
+								</li>
+								<li>
+									<label>
+									<input type="radio" name="numeralSystem" value="Bin"> Bin
+									</label>
+								</li>
+							</ul>
+						</aside>
+
+						<aside>
+							<ul>
+								<li>
+									<label>
+									<input type="radio" name="bytesAmount" value="Qword" checked=""> Qword
+									</label>
+								</li>
+								<li>
+									<label>
+									<input type="radio" name="bytesAmount" value="Dword"> Dword
+									</label>
+								</li>
+								<li>
+									<label>
+									<input type="radio" name="bytesAmount" value="Word"> Word
+									</label>
+								</li>
+								<li>
+									<label>
+									<input type="radio" name="bytesAmount" value="Byte"> Byte
+									</label>
+								</li>
+							</ul>
+						</aside>
+					</div>
+
+					<div class="buttons">
+						<div class="row">
+							<button class="btn btn-mutted" disabled="">&nbsp;</button>
+							<button class="btn">Mod</button>
+							<button class="btn btn-mutted" disabled="">A</button>
+							<button class="btn btn-mutted">MC</button>
+							<button class="btn btn-mutted">MR</button>
+							<button class="btn btn-mutted">MS</button>
+							<button class="btn btn-mutted">M+;</button>
+							<button class="btn btn-mutted">M-</button>
+						</div>
+						<div class="row">
+							<button class="btn">(</button>
+							<button class="btn">)</button>
+							<button class="btn btn-mutted" disabled="">B</button>
+							<button class="btn">?</button>
+							<button class="btn">CE</button>
+							<button class="btn">C</button>
+							<button class="btn">±</button>
+							<button class="btn btn-mutted" disabled="">v</button>
+						</div>
+						<div class="row">
+							<button class="btn">RoL</button>
+							<button class="btn">RoR</button>
+							<button class="btn btn-mutted" disabled="">C</button>
+							<button class="btn num">7</button>
+							<button class="btn num">8</button>
+							<button class="btn num">9</button>
+							<button class="btn">/</button>
+							<button class="btn btn-mutted" disabled="">%</button>
+						</div>
+						<div class="row">
+							<button class="btn">Or</button>
+							<button class="btn">Xor</button>
+							<button class="btn btn-mutted" disabled="">D</button>
+							<button class="btn num">4</button>
+							<button class="btn num">5</button>
+							<button class="btn num">6</button>
+							<button class="btn">*</button>
+							<button class="btn btn-mutted" disabled="">1/x</button>
+						</div>
+						<div class="row">
+							<button class="btn">Lsh</button>
+							<button class="btn">Rsh</button>
+							<button class="btn btn-mutted" disabled="">E</button>
+							<button class="btn num">1</button>
+							<button class="btn num">2</button>
+							<button class="btn num">3</button>
+							<button class="btn">-</button>
+						</div>
+						<div class="row">
+							<button class="btn">Not</button>
+							<button class="btn">And</button>
+							<button class="btn btn-mutted" disabled="">F</button>
+							<button class="btn btn-zero num">0</button>
+							<button class="btn btn-mutted" disabled="">.</button>
+							<button class="btn">+</button>
+						</div>
+
+						<button class="btn btn-result"><span id="resultButton">=</span></button>
+					</div>
+				</form>
+			</article>
+		</section>
+	</div>
+  
+</body></html>

@@ -1,0 +1,104 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>04. Website Header</title>
+    <link rel="stylesheet" href="styles/04. Website Header.css">
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th rowspan="2" width="21.15%">
+                    <a href="http://softuni.bg">
+                    	<table id="logo">
+                        <tr>
+                            <td width="40%">
+                                <img src="images/hat.png" alt="SoftUni hat" width="100%">
+                            </td>
+                            <td>software
+                                <span id="beta">beta</span>
+                                <h3>university</h3>
+                            </td>
+                        </tr>
+                    </table>
+                    </a>
+                </th>
+                <th id="search" align="right">
+                    <a href="https://softuni.bg/notifications">
+                        <span id="notifications">0
+                            <img src="images/bell.png" alt="Bell">
+                        </span>
+                    </a>
+                    <a href="https://softuni.bg/users/profile/show">
+                        <span id="user">User &#8659;</span>
+                    </a>
+                    <input type="search" name="search" placeholder="Search..">
+                    <button>
+                        <img src="images/search.png" alt="Search" >
+                    </button>
+                </th>
+            </tr>
+            <tr id="nav">
+                <th>
+                    <ul>
+                        
+                        <li><a href="https://softuni.bg/news">news</a></li>
+						
+						<li>
+						<select name="about" id="about">
+						<option selected disabled hidden value="">ABOUT THE UNIVERSITY</option>
+						<option value="https://softuni.bg/about">About</option>
+						<option value="https://softuni.bg/professions">Professions</option>
+						<option value="https://softuni.bg/plans">Plans</option>
+						<option value="https://softuni.bg/partner-universities">Partner-universities</option>
+						<option value="https://softuni.bg/professions">Professions</option>
+						<option value="https://softuni.bg/trainers">Trainers</option>
+						<option value="https://softuni.bg/dorms">Dormitories</option>
+						<option value="https://softuni.bg/apply">Apply</option>
+						</select>
+						<script type="text/javascript">
+						var urlmenu = document.getElementById('about');
+						urlmenu.onchange = function() {
+							window.open(this.options[this.selectedIndex].value, "_self");
+						}
+						urlmenu.selectedIndex = 0;
+						</script>
+						</li>
+						
+						<li>
+						<select name="courses" id="courses">
+						<option selected disabled hidden value="">TRAINING COURSES</option>
+						<option value="https://softuni.bg/trainings/courses/list">Courses</option>
+						<option value="https://softuni.bg/trainings/coursesinstances/details/1">Java Basics May 2014</option>
+						<option value="https://softuni.bg/trainings/coursesinstances/details/2">C# Basics March 2014</option>
+						<option value="https://softuni.bg/trainings/coursesinstances/details/1036">C# Basics May 2014</option>
+						<option value="https://softuni.bg/trainings/coursesinstances/details/3">Web Fundamentals (HTML + CSS) May 2014</option>
+						<option value="https://softuni.bg/trainings/coursesinstances/details/6">Teamwork and Personal Skills May 2014</option>
+						</select>
+						<script type="text/javascript">
+						var urlmenu = document.getElementById('courses');
+						urlmenu.onchange = function() {
+							window.open(this.options[this.selectedIndex].value, "_self");
+						}
+						urlmenu.selectedIndex = 0;
+						</script>
+						</li>
+                                                
+                        <li><a href="https://softuni.bg/companies">For companies</a></li>
+                                                
+                        <li><a href="https://softuni.bg/forum">Forum</a></li>
+                                                
+                        <li><a href="https://softuni.bg/contacts">Contacts</a></li>
+                        
+                    </ul>
+                </th>
+            </tr>
+        </thead>
+    </table>
+</body>
+
+</html>

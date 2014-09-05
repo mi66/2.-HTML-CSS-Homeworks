@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Calibri;
+}
+table {
+    color: #fff;
+    background-color: #2d3e50;
+    text-transform: uppercase;
+    width: 100%;
+    padding-right: 6.66%;
+    padding-left: 6.66%;
+}
+#logo {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    text-align: left;
+}
+#beta {
+    vertical-align: super;
+    text-transform: lowercase;
+    font-size: 0.7em;
+}
+ul {
+    padding-left: 0;
+    text-align: center;
+}
+li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 10px;
+}
+#search {
+    padding-right: 10.13%;
+}
+#notifications {
+    padding: 5px;
+}
+#user {
+    padding: 5px;
+}
+
+select {
+    background-color: #2d3e50;
+    border: 1px solid #2d3e50;
+    border-radius: 5px;
+    color: #fff;
+	font-weight: bold;
+    font-size: inherit;
+    margin: 0;
+    overflow: hidden;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}​
+
+#about {
+	width: 180px;
+}
+
+#courses {
+	width: 160px;
+}
+
+select:hover {
+    border-radius: 5px;
+    background-color: #428bca;
+}
+
+option {
+	background-color: #2d3e50;
+	color: #fff;
+	border-radius: 5px;
+}
+
+input[type=search] {
+    height: 25px;
+    border-radius: 5px 0 0 5px;
+}
+button {
+    background-color: #fff;
+    border-radius: 0 5px 5px 0;
+}
+a {
+    color: #fff;
+    text-decoration: none;
+}
+a:hover {
+    border-radius: 5px;
+    background-color: #428bca;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
